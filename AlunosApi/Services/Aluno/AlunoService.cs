@@ -2,7 +2,7 @@
 using AlunosApi.Utils;
 using MongoDB.Driver;
 
-namespace AlunosApi.Services
+namespace AlunosApi.Services.Aluno
 {
     public class AlunoService
     {
@@ -23,7 +23,8 @@ namespace AlunosApi.Services
 
         public AlunoModel BuscarAluno(string id)
         {
-            return _alunoCollection.Find(aluno => aluno.Id == id).FirstOrDefault();
+            var retorno = _alunoCollection.Find(aluno => aluno.Id == id).FirstOrDefault();
+            return retorno;
         }
 
         public List<AlunoModel> BuscarTodos()
@@ -35,17 +36,14 @@ namespace AlunosApi.Services
         public bool DeletarAluno(string id)
         {
             var deletarAluno = _alunoCollection.DeleteOne(aluno => aluno.Id == id);
+
             if (deletarAluno.DeletedCount > 0)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
-        public AlunoModel? UpdateAluno(string id, AlunoModel aluno)
+        public AlunoModel UpdateAluno(string id, AlunoModel aluno)
         {
             // Filtro pelo ID
             var filter = Builders<AlunoModel>.Filter.Eq(a => a.Id, id);
@@ -67,7 +65,10 @@ namespace AlunosApi.Services
 
             if(aluno.Status != null)
                 updateList.Add(Builders<AlunoModel>.Update.Set(a => a.Status, aluno.Status));
-           
+
+            if (aluno.CodigoCurso.HasValue)
+                updateList.Add(Builders<AlunoModel>.Update.Set(a => a.CodigoCurso, aluno.CodigoCurso.Value));
+
             // Combina todas as atualizações em uma só
             var update = Builders<AlunoModel>.Update.Combine(updateList);
 

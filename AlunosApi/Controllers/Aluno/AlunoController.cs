@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AlunosApi.Models.Aluno;
-using AlunosApi.Services;
+using AlunosApi.Services.Aluno;
 
 namespace AlunosApi.Controllers.Aluno
 {
@@ -16,14 +16,14 @@ namespace AlunosApi.Controllers.Aluno
         }
 
         [HttpPost("cadastrarAluno")]
-        public AlunoModel Post([FromBody] AlunoModel aluno)
+        public AlunoModel Create([FromBody] AlunoModel aluno)
         {
             var retorno = _alunoService.CreateAluno(aluno);
             return retorno;
         }
 
         [HttpGet("buscarAluno/{id}")]
-        public AlunoModel Get([FromRoute] string id)
+        public AlunoModel GetById([FromRoute] string id)
         {
            var retorno = _alunoService.BuscarAluno(id);
             return retorno;
@@ -37,7 +37,7 @@ namespace AlunosApi.Controllers.Aluno
         }
 
 
-        [HttpDelete("deletarAlunos/{id}")]
+        [HttpDelete("deletarAluno/{id}")]
         public bool Delete([FromRoute] string id) {
             var retorno = _alunoService.DeletarAluno(id);
             return retorno;

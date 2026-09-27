@@ -1,4 +1,7 @@
-using AlunosApi.Services;
+using AlunosApi.Services.Aluno;
+using AlunosApi.Services.Curso;
+using AlunosApi.Services.Disciplina;
+using AlunosApi.Services.Professor;
 using AlunosApi.Utils;
 using Microsoft.Extensions.Options;
 
@@ -16,6 +19,9 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp =>
 
 // Injeção de dependência
 builder.Services.AddScoped<AlunoService>();
+builder.Services.AddScoped<DisciplinaService>();
+builder.Services.AddScoped<CursoService>();
+builder.Services.AddScoped<ProfessorService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
