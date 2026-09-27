@@ -1,0 +1,25 @@
+﻿services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_alunos
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      
+  alunos-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api_alunos
+    restart: always
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - mongodb
+
+volumes:
+  mongodb_data:
