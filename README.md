@@ -3,7 +3,8 @@
 
 # Dados do Banco
 ## Collection Aluno
-<img width="1920" height="616" alt="image" src="https://github.com/user-attachments/assets/3ec60125-59e0-4c1c-8e0c-250cd5e96f48" />
+<img width="1920" height="621" alt="image" src="https://github.com/user-attachments/assets/ec0439bf-56ae-419a-98fc-467d271d032b" />
+
 
 ## Collection Curso
 <img width="1920" height="935" alt="image" src="https://github.com/user-attachments/assets/4c58edb6-b0b6-474b-b0ce-2a3c6b1a2b5b" />
