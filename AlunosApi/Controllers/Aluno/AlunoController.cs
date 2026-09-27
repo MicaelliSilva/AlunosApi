@@ -41,8 +41,14 @@ namespace AlunosApi.Controllers.Aluno
         public bool Delete([FromRoute] string id) {
             var retorno = _alunoService.DeletarAluno(id);
             return retorno;
-        } 
+        }
 
-        // fazer um endpoint de update (pelo id)
+
+        [HttpPatch("atualizarAluno/{id}")]
+        public AlunoModel Update([FromRoute] string id, [FromBody] AlunoModel aluno)
+        {
+            var retorno = _alunoService.UpdateAluno(id, aluno);
+            return retorno;
+        }
     }
 }
