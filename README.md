@@ -1,3 +1,7 @@
+# Descrição
+Api destinada a representar um CRUD de uma Universidade com alunos, professores, cursos e disciplinas.
+Utilizando: C# | MongoDB | Docker
+
 # Endpoints da API
 <img width="1920" height="1041" alt="image" src="https://github.com/user-attachments/assets/4ab95d2a-8ad2-4b36-b7f0-351952c8aa0c" />
 
